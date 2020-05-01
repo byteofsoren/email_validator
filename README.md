@@ -3,18 +3,13 @@ How to compile.
 
 `
 $ git clone ---
-
 $ cd email_validator
-
 $ mkdir build
-
 $ cd build
-
 $ cmake ..
-
 $ make
-
 `
+
 ## How to use.
 
 `
