@@ -6,6 +6,7 @@
 /* Remove this line if you want to deactivate the debug output */
 /* #define DEBUG */
 
+/* Macros for defining messages and other practical abbriviations */
 #ifdef DEBUG
     #define DEBUG_MSG(var,val) printf("[DEBUG_MSG] %s = %d\n",var,val);
     #define PtrToChar(t,fun) \
@@ -20,7 +21,7 @@
 #endif /* ifndef DEBUG */
 
 
-#define MAX_STATES 101
+#define MAX_STATES 10
 
 /*! \enum states_t
  *
@@ -29,14 +30,14 @@
  */
  typedef enum _states_t {
     st_init = 0,
-    st_local_part= 10,
-    st_local_part_dot= 11,
-    st_domain_start = 20,
-    st_domain_run = 25,
-    st_domain_dot = 27,
-    st_sub_domain = 30,
-    st_allok = 90,
-    st_error = 100,
+    st_local_part= 1,
+    st_local_part_dot= 2,
+    st_domain_start = 3,
+    st_domain_run = 4,
+    st_domain_dot = 5,
+    st_sub_domain = 6,
+    st_allok = 7,
+    st_error = 8,
  }states_t ;
 
  /*! \struct emailValidator_t
@@ -136,8 +137,6 @@ int isEmail(char *str)
 void em_init(emailValidator_t *data)
 {
     PtrToChar(t,"em_init")
-    /* char t = *(data->str + data->pos); */
-    /* data->pos++; */
 
     /* This state is only viable when st_init and the first character is a alphanumeric character */
     if ((data->state == st_init) && (isalpha(t) != 0))
@@ -171,16 +170,14 @@ void em_local_part_dot(emailValidator_t *data)
 
 /*! \brief Enters the local part of the email
  *
- *  Detailed description of the function
+ * The local part of an email is the part before the '@'
+ * sign. This part can not have dual dots '..' thus the
+ * local part is divided up in two parts.
  *
  * \param emailValidator_t *data The input to the state
  */
 void em_local_part_start(emailValidator_t *data)
 {
-    /* char t = *(data->str + data->pos); */
-    /* data->pos++; */
-    /* DEBUG_MSG("data.pos",(int)data->pos); */
-    /* DEBUG_MSG("data.length",(int)data->length); */
     PtrToChar(t,"em_local_part_start")
     if (data->pos < data->length) {
 
