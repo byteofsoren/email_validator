@@ -2,11 +2,26 @@
 How to compile.
 
 `
-$ git clone ---
+$ git clone https://github.com/byteofsoren/email_validator.git
+`
+
+`
 $ cd email_validator
+`
+
+`
 $ mkdir build
+`
+
+`
 $ cd build
+`
+
+`
 $ cmake ..
+`
+
+`
 $ make
 `
 
