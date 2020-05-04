@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../lib/emailValidator.h"
+#include "../email_validator/emailValidator.h"
 
 int main(int argc, char *argv[])
 {
